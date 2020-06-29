@@ -1,0 +1,37 @@
+<!-- <h1>
+  File Upload
+</h1>
+<div class='row'>
+  <div class='col-sm-4'>
+      <app-file-input-widget [source]="source1"></app-file-input-widget>
+  </div>
+    <div class='col-sm-4 text-center'>
+      <button *ngIf="dataSourceColumnList1 && dataSourceColumnList2" class="btn btn-xs btn-primary btn-file" type="button" (click)="onCompare()">Compare</button>
+    </div>
+  <div class='col-sm-4'>
+      <app-file-input-widget [source]="source2"></app-file-input-widget>
+  </div>  
+</div>
+
+<div class='row getScroll'>
+  <div class='col-sm-4'>
+      <app-column-mapping-widget [source]="source1" [dataSourceColumnList]="dataSourceColumnList1" ></app-column-mapping-widget>
+  </div>
+  <div class="col-sm-4 text-center">
+        <app-datafilterswidget [dataSourceColumnList1]="dataSourceColumnList1" [dataSourceColumnList2]="dataSourceColumnList2">
+
+          </app-datafilterswidget>
+  </div>
+  <div class='col-sm-4'>
+      <app-column-mapping-widget [source]="source2" [dataSourceColumnList]="dataSourceColumnList2" ></app-column-mapping-widget>
+  </div>
+</div>
+<div class="row">
+    
+    <div class='col-sm-12' *ngIf="comparisonResult">
+<app-comparision-output-grid [comparisonResult]="comparisonResult" [dataSourceColumnList] = "dataSourceColumnList">  
+</app-comparision-output-grid>
+<app-piechart [chartData]="chartData"></app-piechart>
+
+</div>
+</div> -->

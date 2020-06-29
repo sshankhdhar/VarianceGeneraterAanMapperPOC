@@ -1,0 +1,46 @@
+mat-grid-tile {
+   margin-left: 0px;
+}
+.div-group {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+  }
+.next-back1{
+    // margin: auto;
+    width: 22%;
+    border: 3px solid #787a7c;
+    padding: 10px;
+}
+.next-back2{
+  // margin: auto;
+  width: 38%;
+  border: 3px solid #787a7c;
+  padding: 10px;
+}
+.next-back3{
+  margin: auto;
+  width: 28.7%;
+  border: 3px solid #787a7c;
+  padding: 10px;
+}
+.next-back4{
+  width: fit-content;
+  border: 3px solid #787a7c;
+  padding: 10px;
+}
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+.ColumsofDatasource1{
+  border-bottom: solid #607d8b;
+  position: relative;
+  left: 248px;
+  bottom: 48px;
+}
+.ColumsofDatasource2{
+  border-bottom: solid #607d8b;
+  position: relative;
+  right: 250px;
+  bottom: 230px;
+}

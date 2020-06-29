@@ -1,0 +1,108 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+h1 {
+    color: #369 ;
+    font-family: Arial, Helvetica, sans-serif ;
+    font-size: 250% ;
+  }
+  h2, h3 {
+    color: #444 ;
+    font-family: Arial, Helvetica, sans-serif ;
+    font-weight: lighter ;
+  }
+  body {
+    margin: 2em ;
+  }
+  body, input[type="text"], button {
+    color: #888 ;
+    font-family: Cambria, Georgia ;
+  }
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif ;
+  }
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto;
+  }
+  .getScroll {
+    overflow-y: auto;    
+    overflow-x: hidden;    
+    height: 480px;;    
+  }
+  @media (min-width: 576px)
+{
+.modal-dialog {
+    max-height: 80% !important;
+    max-width: 50% !important;    
+    margin: 1.75rem auto;
+}
+}
+.modal-body
+{
+  max-height: 450px !important;
+  overflow:auto !important;
+
+}*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+.btn-group-sm>.btn, .btn-xs {
+  padding: 0.25rem .5re !important;
+  font-size: 0.799rem !important;
+  line-height: 10px !important;
+  border-radius: .2rem !important;
+}
+
+.tenPadding {
+  padding: 10px 10px 10px 10px;
+}
+.zeroPadding {
+  padding: 0px 0px 0px 0px;
+}
+
+.leftPadding{
+  padding-left: 14px;
+}
+
+//Scrool Bar CSS
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #007bff; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #007bff; 
+}
+
+.card-header {
+  padding: 6px 7px 6px 7px !important;
+  margin-bottom: 0 !important;
+  background-color: rgba(0,0,0,.03) !important;
+  border-bottom: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.card-group>.card {
+  flex: 1 0 0% !important;
+  margin-top: 5px !important;
+}

@@ -1,0 +1,14 @@
+<div class="row">    
+  <div class="col-md-12"> 
+    <div *ngIf="DisplayParent && !DisplayChild">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+        [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend"
+        (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div *ngIf="!DisplayParent && DisplayChild">
+        <canvas baseChart [data]="detailPieChartData" [labels]="detailPieChartLabels" [chartType]="detailPieChartType"
+        [options]="detailPieChartOptions" [plugins]="detailPieChartPlugins" [legend]="detailPieChartLegend"
+        (chartClick)="chartClicked($event)"></canvas>
+      </div>
+  </div>  
+</div>

@@ -1,0 +1,14 @@
+<label>Select Date: </label>
+<div class="input-group">
+  <input
+    class="form-control"
+    placeholder="Select Date and Time"
+    name="dp"
+    [(ngModel)]="datemodel"
+    ngbDatepicker
+    #d="ngbDatepicker"
+    (click)="d.toggle()"
+    autocomplete="off"
+    (ngModelChange)="onDateClick($value);"
+  />
+</div>

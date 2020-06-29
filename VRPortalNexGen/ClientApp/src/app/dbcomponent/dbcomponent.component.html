@@ -1,0 +1,179 @@
+<!-- <input  [(ngModel)]="dataSourceColumns.DataSourceType" (ngModelChange)="UpdateDatasourceModel()"> -->
+<div class="first">
+  <mat-form-field appearance="outline">
+    <mat-label>Database Server Name</mat-label>
+    <input matInput class="full-width" [(ngModel)]="dataSourceColumns.DBServerName">
+  </mat-form-field>
+  <div *ngIf="!dataSourceColumns.Flag.IsDBAvailable">
+    <div class="container">
+      <div class="col-sm-6">
+        <mat-radio-group aria-label="Database Credentials">
+          <mat-radio-button name="fieldName" style="padding-right: 8px;" ngDefaultControl value="Windows"
+            [(ngModel)]="credentialType" (change)="handleChange($event)" checked>Windows</mat-radio-button>
+          <mat-radio-button name="fieldName" ngDefaultControl value="Sql" [(ngModel)]="credentialType"
+            (change)="handleChange($event)">Sql</mat-radio-button>
+        </mat-radio-group>
+        <div *ngIf="dataSourceColumns.Flag.sqlflag">
+          <form class="example-form">
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Database Server Username" [(ngModel)]="dbServerUserName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Database Server Password" [(ngModel)]="dbServerPassword">
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+      <!-- <button mat-raised-button color="accent" (click)="onSubmit()">Test Connection</button> -->
+    </div>
+  </div>
+  <div *ngIf="!dataSourceColumns.Flag.IsDBAvailable">
+    <button mat-raised-button color="accent" (click)="GetDatabaseCredentials()">Test Connection</button>
+  </div>
+  <div class="div-group" *ngIf="dataSourceColumns.Flag.IsDBAvailable">
+    <mat-form-field appearance="outline">
+      <mat-label>Database</mat-label>
+      <mat-select [(ngModel)]="dataSourceColumns.DBName" (ngModelChange)="CheckDatabaseSelected()">
+        <mat-option [value]="undefined" disabled selected>Select DB</mat-option>
+        <mat-option *ngFor="let db of dataSourceColumns.dbNameList" [value]="db">{{db}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="div-group" *ngIf="dataSourceColumns.Flag.IsDatabaseSelected">
+    <mat-form-field appearance="outline">
+      <mat-label>Database Object</mat-label>
+      <mat-select [(ngModel)]="dataSourceColumns.DatabaseObjectType" (ngModelChange)="GetDatabaseObjectDetails()">
+        <mat-option [value]="undefined" disabled selected>Select DB Object</mat-option>
+        <mat-option value='undefined'>Undefined</mat-option>
+        <mat-option value='Query'>Query</mat-option>
+        <mat-option value='StoredProcedure'>Stored Procedure</mat-option>
+        <mat-option value='Tables'>Tables</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="div-group" *ngIf="dataSourceColumns.Flag.IsStoredProcedureAvailable">
+    <mat-form-field appearance="outline">
+      <mat-label>{{dataSourceColumns.DatabaseObjectType}} </mat-label>
+      <mat-select placeholder="Select Stored Procedure" [(ngModel)]="dataSourceColumns.StoredProcedureName"
+        (ngModelChange)="GetStoredProcedureParameterNames()">
+        <mat-option [value]="undefined" disabled selected>Select Stored Procedure</mat-option>
+        <mat-option *ngFor="let storedProcedureName of dataSourceColumns.storedProcedureNameList"
+          [value]="storedProcedureName">
+          {{storedProcedureName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="div-group" *ngIf="dataSourceColumns.Flag.IsQuerySelected">
+    <mat-form-field appearance="outline">
+      <mat-label>{{dataSourceColumns.DatabaseObjectType}} </mat-label>
+      <textarea placeholder="Provide SQL Query" [(ngModel)]="dataSourceColumns.SqlQuery" rows="1"
+        (keyup)="autogrow($event)"></textarea>
+      <button mat-raised-button (click)="GetQueryColumns()">
+        Submit Query
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="div-group" *ngIf="dataSourceColumns.Flag.IsTableAvailable">
+    <mat-form-field appearance="outline">
+      <mat-label>{{dataSourceColumns.DatabaseObjectType}}</mat-label>
+      <mat-select placeholder="Select Table" [(ngModel)]="dataSourceColumns.TableName"
+        (ngModelChange)="GetColumnNames()">
+        <mat-option [value]="undefined" disabled selected>Select Table</mat-option>
+        <mat-option *ngFor="let tables of dataSourceColumns.tableNameList" [value]="tables">
+          {{tables}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- <div class='row getScroll' *ngIf="dataSourceColumns.Flag.IsColumnAvailable">
+        <div class='col-sm-12'>
+          <app-column-mapping-widget [(List)]="ColumnName" (listChange)="listChange($event)" [WidgetId]="DataSource1">
+          </app-column-mapping-widget>
+          <app-column-mapping-widget [source]="source" [dataSourceColumnList]="dataSourceColumns"></app-column-mapping-widget>
+        </div>
+      </div> -->
+</div>
+<!-- <div>
+    <button mat-raised-button matStepperNext color="accent" style="height:40px; width:100px">Next</button>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class='row'>
+  <div class="col-sm-12">      
+    <label>Database Server Name:</label>
+    <div class="input-group">
+      <input type="text" placeholder="Enter DB Server" class="form-control" [(ngModel)]="dbServerName">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-primary" (click)="GetDatabaseCredentials()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-sm-6'>
+    <div *ngIf="IsDBAvailable">
+      <label>Database: </label>
+      <select placeholder="Select Database" class="form-control" [(ngModel)]="databaseNames" (change)="CheckDatabaseSelected()">
+        <option [ngValue]="undefined" disabled  selected>Select Database</option>
+        <option *ngFor="let db of dbNameList" [ngValue]="db">
+          {{db}}
+        </option>
+      </select>
+    </div>
+  </div> 
+  <div class='col-sm-6'>
+    <div *ngIf="IsDatabaseSelected">
+      <label>Database Object: </label>
+      <select placeholder="Select Database Object" class="form-control" [(ngModel)]="dataSourceColumns.DatabaseObjectType"
+        (change)="GetDatabaseObjectDetails()">
+        <option [ngValue]="undefined" disabled  selected>Select Database Object</option>
+        <option value="Query">Query</option>
+        <option value="StoredProcedure">Stored Procedures</option>
+        <option value="Tables">Tables</option>
+      </select>
+    </div>
+  </div>
+</div>-->
+
+<!-- <div *ngIf="IsTableAvailable">
+      <label>{{dataSourceColumns.DatabaseObjectType}} </label>
+      <select placeholder="Select Table" class="form-control" [(ngModel)]="tableNames" (change)="GetColumnNames()">
+        <option [ngValue]="undefined" disabled  selected>Select Table</option>
+        <option *ngFor="let tables of tableNameList" [ngValue]="tables">
+          {{tables}}
+        </option>
+      </select>
+    </div> -->
+<!-- <div *ngIf="IsStoredProcedureAvailable">
+      <label>{{dataSourceColumns.DatabaseObjectType}} </label>
+      <select placeholder="Select Stored Procedure" class="form-control" [(ngModel)]="storedProcedureNames" (change)="GetStoredProcedureParameterNames()">
+        <option [value]="undefined" disabled  selected>Select Stored Procedure</option>
+        <option *ngFor="let storedProcedureName of storedProcedureNameList" [value]="storedProcedureName">
+          {{storedProcedureName}}
+        </option>
+      </select>
+    </div> -->
+
+
+<!-- <div *ngIf="IsQuerySelected">
+    <label>{{dataSourceColumns.DatabaseObjectType}} </label>    
+    <textarea class="form-control" id="sqlQuery" placeholder="Provide SQL Query" [(ngModel)]="sqlQuery" rows="1" (keyup)="autogrow($event)"></textarea>
+    <button type="button" class="btn btn-primary" (click)="GetQueryColumns()">
+        Submit Query
+    </button>   
+  </div>
+</div> -->

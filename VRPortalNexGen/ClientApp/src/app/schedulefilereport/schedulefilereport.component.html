@@ -1,0 +1,28 @@
+<h1>
+  File Upload
+</h1>
+<div class='row'>
+  <div class='col-sm-6'>
+      <!-- <app-file-input-widget #filedetails1 [source]="source1"></app-file-input-widget> -->
+  </div>
+  <div class='col-sm-6'>
+      <!-- <app-file-input-widget #filedetails2 [source]="source2"></app-file-input-widget> -->
+  </div>
+</div>
+<div class='row getScroll'>
+  <div class='col-sm-4'>
+      <app-column-mapping-widget [source]="source1" [dataSourceColumnList]="dataSourceColumnList1" ></app-column-mapping-widget>
+  </div>
+  <div class='col-sm-4 offset-md-4'>
+      <app-column-mapping-widget [source]="source2" [dataSourceColumnList]="dataSourceColumnList2" ></app-column-mapping-widget>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-sm-12">
+    <app-calendar #calendar></app-calendar>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="ScheduleReport()">
+    Schedule Report
+  </button>
+</div>

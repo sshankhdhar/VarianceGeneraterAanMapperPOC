@@ -1,0 +1,11 @@
+<div *ngIf="dataSourceColumnList">
+  <ul class="dnd" id="dnd" dragula="{{source}}" [(dragulaModel)]="dataSourceColumnList.ColumnNameList">
+    <ol style="padding-left: 0px;" *ngFor="let vamp of dataSourceColumnList.ColumnNameList; let i = index">
+      <!-- <span class="badge">{{i+1}}</span>
+      <div class="Content">{{ vamp.ColumnName}}</div> -->
+      <mat-card>{{i+1}} {{ vamp.ColumnName}}</mat-card>
+      <hr class="high">
+      <hr class="high2">
+    </ol>
+  </ul>
+</div>

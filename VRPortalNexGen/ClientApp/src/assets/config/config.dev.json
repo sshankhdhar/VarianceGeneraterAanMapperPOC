@@ -1,0 +1,31 @@
+{
+    "env": {
+    "name": "DEV"
+     },
+    "appInsights": {
+    "instrumentationKey": "<dev-guid-here>"
+     },
+    "logging": {
+    "console": true,
+    "appInsights": false
+    },
+    "aad": {
+    "requireAuth": true,
+    "tenant": "<dev-guid-here>",
+    "clientId": "<dev-guid-here>"
+    },
+    "apiServer": {
+    "metadata": "https://metadata.demo.com/api/v1.0/",
+    "rules": "https://rules.demo.com/api/v1.0/"
+    },
+    "adalConfig": {
+        "clientId": "d16f60c8-44db-4823-8290-615c1dac3518",
+        "tenant": "f720594b-b725-4036-b27c-48d2a28840a3",
+        "redirectUri": "https://localhost:5001/common-platform",
+        "postLogoutRedirectUri": "https://localhost:5001/signout-callback-oidc",
+        "cacheLocation": "localStorage",
+        "endpoints": {
+            "api": "d16f60c8-44db-4823-8290-615c1dac3518"
+        }
+    }
+}

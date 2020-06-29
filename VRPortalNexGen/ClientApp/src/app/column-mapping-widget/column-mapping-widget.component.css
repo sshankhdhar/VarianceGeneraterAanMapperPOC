@@ -1,0 +1,148 @@
+/* in-flight clone */
+/* .gu-mirror {
+  position: fixed !important;
+  z-index: 9999 !important;
+  opacity: 1;
+  left: 160px !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  pointer-events: none;
+  background-color:  #EEE !important;
+  margin: .5em 0.5em 0.5em 0em !important;
+  padding: .3em 0 !important;
+  height: 1.6em !important;
+  border-radius: 4px !important;
+  } */
+
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  pointer-events: none;
+  background-color: #eee !important;
+}
+/* high-performance display:none; helper */
+.gu-hide {
+  left: -9999px !important;
+}
+/* added to mirrorContainer (default = body) while dragging */
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+/* added to the source element while its mirror is dragged */
+.gu-transit {
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+
+#dnd {
+  margin: 0 0 2em 0 !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  width: 15em !important;
+}
+#dnd li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #eee;
+  margin: 0.5em 0.5em 0.5em 0em;
+  padding: 0.3em 0;
+  height: 1.6em;
+  width: 363px;
+  border-radius: 4px;
+}
+#dnd li.selected:hover {
+  background-color: #bbd8dc !important;
+  color: white !important;
+}
+#dnd li:hover {
+  color: #607d8b !important;
+  background-color: #ddd !important;
+  left: 0.1em !important;
+}
+#dnd .text {
+  position: relative !important;
+  top: -3px !important;
+}
+#dnd .badge {
+  display: inline-block !important;
+  font-size: small !important;
+  color: white !important;
+  padding: 0.8em 0.7em 0em 0.7em !important;
+  background-color: #607d8b !important;
+  line-height: 1em !important;
+  position: relative !important;
+  left: -1px !important;
+  top: -5px !important;
+  height: 2em !important;
+  margin-right: 0.8em !important;
+  border-radius: 4px 0 0 4px !important;
+}
+#dnd li .Content {
+  position: absolute;
+  top: 2px;
+  left: 40px;
+}
+.gu-mirror .badge {
+  display: inline-block !important;
+  font-size: small !important;
+  color: white !important;
+  padding: 0.8em 0.7em 0em 0.7em !important;
+  background-color: #607d8b !important;
+  line-height: 1em !important;
+  position: absolute !important;
+  left: -1px !important;
+  top: -0px !important;
+  height: 2em !important;
+  margin-right: 0.8em !important;
+  border-radius: 4px 0 0 4px !important;
+}
+.gu-mirror li.selected:hover {
+  background-color: #bbd8dc !important;
+  color: white !important;
+}
+.gu-mirror li:hover {
+  color: #607d8b !important;
+  background-color: #ddd !important;
+  left: 0.1em !important;
+}
+.gu-mirror .text {
+  position: relative !important;
+  top: -3px !important;
+}
+
+.gu-mirror .Content {
+  position: absolute;
+  top: 3px;
+  left: 40px;
+}
+.mat-card{
+  margin-bottom: 20px;
+}
+.high{
+  border-bottom: #e0e0e0;
+    position: relative;
+    left: 248px;
+    bottom: 49px;
+    width: 200%;
+   
+}
+.high2{
+  border-bottom: #e0e0e0;
+  position: relative;
+  right: 316px;
+  bottom: 66px;
+  width: 130%;
+}
+
+ol ol, ol ul, ul ol, ul ul {
+  margin-bottom: -50px;
+}

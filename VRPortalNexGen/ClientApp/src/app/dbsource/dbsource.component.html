@@ -1,0 +1,70 @@
+<mat-horizontal-stepper labelPosition="bottom" [linear]="true" #stepper>
+  <mat-step >
+        <ng-template matStepLabel>Data source 1</ng-template>
+        <!-- <app-dbcomponent [source]='source1' #dbdetails1></app-dbcomponent> -->
+  </mat-step>
+    <mat-step>
+        <!-- <ng-template matStepperIcon="done"></ng-template> -->
+        <ng-template matStepLabel>Data source 2</ng-template>
+        <!-- <app-dbcomponent [source]='source2' #dbdetails2></app-dbcomponent> -->
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Configure Columns</ng-template>
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-column-mapping-widget [source]="source1" [dataSourceColumnList]="dbdetails1.dataSourceColumns"></app-column-mapping-widget>
+      </div>
+      <div class="col-sm-3">
+        <app-column-mapping-widget [source]="source2" [dataSourceColumnList]="dbdetails2.dataSourceColumns"></app-column-mapping-widget>
+      </div>
+      <div *ngIf="dbdetails1" class="col-sm-3">
+          <button type="button" class="btn-primary" (click)="CompareData(stepper)">Compare</button>
+        </div> 
+        <!-- <div class="col-sm-3">
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>  -->
+        </div>  
+    </div>
+     
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Get Report</ng-template>
+    <div class="col-sm-12" *ngIf="comparisonResult">
+        <app-comparision-output-grid
+          [comparisonResult]="comparisonResult">        
+        </app-comparision-output-grid>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+
+
+
+
+
+<!-- <div class="row">
+  <div class="col-sm-12">
+    <app-dbcomponent [source]='source1' #dbdetails1></app-dbcomponent>
+  </div>
+  <div class="col-sm-6">
+    <app-dbcomponent [source]='source2' #dbdetails2></app-dbcomponent>
+  </div>
+</div> -->
+<!-- <div *ngIf="dbdetails1">
+  <button type="button" class="btn btn-primary" (click)="CompareData()">
+    Compare
+  </button>
+</div> -->
+<!-- <div *ngIf="IsResultAvailable">
+  <app-comparison-output-widget [comparisonResult]=comparison></app-comparison-output-widget>
+  <app-modaloutput [comparisonResult]=comparison></app-modaloutput>
+</div> -->
+<!-- <div class="row">
+  <div class="col-sm-12" *ngIf="comparisonResult">
+    <app-comparision-output-grid
+      [comparisonResult]="comparisonResult"
+    ></app-comparision-output-grid>
+  </div>
+</div> -->

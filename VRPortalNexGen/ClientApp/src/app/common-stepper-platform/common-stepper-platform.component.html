@@ -1,0 +1,100 @@
+<!-- loader.component.html -->
+<div class="progress-loader" *ngIf="loading != 0">
+  <mat-progress-bar mode="determinate" value="loading"></mat-progress-bar>
+</div>
+<mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+  <mat-step completed=false>
+    <div class="row">
+      <div class="col-md-5">
+        <ng-template matStepLabel>Data source 1</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Select Data Source 1</mat-label>
+          <mat-select [(ngModel)]="DataSourceType1" (ngModelChange)="onNavigateDataSource1()" required>
+            <mat-option value="db-source">Database</mat-option>
+            <mat-option value="file-upload">File</mat-option>
+            <mat-option value="file-upload">WebAPI</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <div class="next-back1">
+          <button mat-raised-button color="primary" (click)="goForward(stepper)">Next</button>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+
+  <mat-step completed=false>
+
+    <div class="row">
+      <div class="col-md-5">
+        <ng-template matStepLabel>Data source 2</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Select Data Source 2</mat-label>
+          <mat-select [(ngModel)]="DataSourceType2" (ngModelChange)="onNavigateDataSource2()" required>
+            <mat-option value="db-source">Database</mat-option>
+            <mat-option value="file-upload">File</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <app-dbcomponent [source]='source2' #dbdetails2></app-dbcomponent> -->
+
+      </div>
+      <div class="col-md-4">
+        <div class="next-back2">
+          <button mat-raised-button color="primary" (click)="goBack(stepper)">Back</button>
+          <button mat-raised-button color="primary" (click)="goForward(stepper)">Next</button>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+
+  <mat-step completed=false>
+    <div class="row">
+      <ng-template matStepLabel>Configure Column Mapping</ng-template>
+      <div class="col-sm-3">
+        <app-column-mapping-widget [source]="dataSourceObject1.Source" [dataSourceColumnList]="dataSourceObject1">
+        </app-column-mapping-widget>
+      </div>
+      <div class="col-sm-6 text-center">
+        <div class="next-back3">
+          <button mat-raised-button color="primary" (click)="goBack(stepper)">Back</button>
+          <button *ngIf="dataSourceObject1 && dataSourceObject2" mat-raised-button color="primary"
+            (click)="goForward(stepper)">Compare</button>
+        </div>
+        <div class="">
+          <app-datafilterswidget [dataSourceColumnList1]="dataSourceObject1" [dataSourceColumnList2]="dataSourceObject2">
+            
+          </app-datafilterswidget>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="float-right">
+          <app-column-mapping-widget [source]="dataSourceObject2.Source" [dataSourceColumnList]="dataSourceObject2">
+          </app-column-mapping-widget>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+
+  <mat-step completed=false>
+    <div class="row">
+      <ng-template matStepLabel>Compare</ng-template>
+      <div class="col-md-3 col-md-offset-5">
+        <div class="next-back">
+          <button *ngIf="StepNumber > 1" mat-raised-button color="primary" (click)="goBack(stepper)">Back</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" *ngIf="comparisonResult && dataSourceColumnList">
+        <app-comparision-output-grid [comparisonResult]="comparisonResult" [dataSourceColumnList]="dataSourceColumnList">
+        </app-comparision-output-grid>
+      </div>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>
+<!-- {{dataSourceObject1.DataSourceType}} -->
+<div class="col-md-12">
+  <router-outlet></router-outlet>
+</div>

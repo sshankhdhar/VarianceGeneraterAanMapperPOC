@@ -1,0 +1,9 @@
+<div *ngIf="ProgressPercentage>80">
+  <ngb-progressbar type="success" showValue="true" value="{{ProgressPercentage|number:'1.2-2'}}"></ngb-progressbar>
+</div>
+<div *ngIf="ProgressPercentage>50 && ProgressPercentage<80">
+  <ngb-progressbar type="warning" showValue="true" value="{{ProgressPercentage|number:'1.2-2'}}"></ngb-progressbar>
+</div>
+<div *ngIf="ProgressPercentage<50">
+  <ngb-progressbar type="danger" showValue="true" value="{{ProgressPercentage|number:'1.2-2'}}"></ngb-progressbar>
+</div>

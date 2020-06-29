@@ -1,0 +1,12 @@
+<mat-toolbar class="mat-figure">
+    <img class="image1" src="assets\images\imaginea.png" Height="35px"width="150px">
+    <span class='filler'></span>
+    <!-- <span class='report'><a mat-list-item routerLink="/fetch-data">Weather Service</a></span> -->
+    <span class='report'><a mat-list-item routerLink="/common-platform">Admin Configuration</a></span>
+    <!-- <span class='report'><a mat-list-item routerLink="/db-source">Compare</a></span> -->
+    <span class='report'><a mat-list-item>User Module</a></span>
+    <button mat-raised-button color="blue" (click)="logOut()">LogOut</button>
+</mat-toolbar>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

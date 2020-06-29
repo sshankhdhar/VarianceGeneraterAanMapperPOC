@@ -1,0 +1,54 @@
+<div class="col-lg-12 text-centre" style="margin-top: 15px; margin-bottom: 15px;" >
+<button *ngIf="dataSourceColumnList1 && dataSourceColumnList2 && !loadCommonColumnfilters" class="btn btn-xs btn-dark btn-file" type="button" (click)="onAddCommonCol()">Add Common Column</button>
+<button *ngIf="loadCommonColumnfilters" class="btn btn-xs btn-dark btn-file" type="button" >Select Common Columns</button>
+</div>  
+
+<div *ngIf="loadCommonColumnfilters" class="row leftPadding">
+  <select class="form-control col-lg-5" [(ngModel)]="dataSourceColumnList1.CommonColumn">
+      <option [ngValue]="undefined" disabled  selected>Source 1</option>
+    <option *ngFor="let col of dataSourceColumnList1.ColumnNameList" [ngValue]="col.ColumnName">
+      {{col.ColumnName}}
+    </option>
+  </select>
+  <div class="col-lg-2"><h1>=</h1></div>
+  <select class="form-control  col-lg-5" [(ngModel)]="dataSourceColumnList2.CommonColumn" style="z-index: 1;">
+      <option [ngValue]="undefined" disabled  selected>Source 2</option>
+    <option *ngFor="let col of dataSourceColumnList2.ColumnNameList" [ngValue]="col.ColumnName">
+      {{col.ColumnName}}
+    </option>
+  </select>
+</div>
+
+<!-- <div class="col-lg-12 text-centre" style="padding-left: 30px;" >
+  <button *ngIf="dataSourceColumnList1 && dataSourceColumnList2 && !loadDatefilters" class="btn btn-xs btn-dark btn-file" type="button" (click)="onAddDateCol()">Add Date Filter</button>
+<button *ngIf="loadDatefilters" class="btn btn-xs btn-dark btn-file" type="button" >Select Date Columns</button>
+  
+</div> -->
+
+<div *ngIf="loadDatefilters">
+  <div  class="row leftPadding">
+    <select class="form-control col-lg-5" [(ngModel)]="dataSourceColumnList1.DataTableFilterList[0].ColumnName">
+        <option [ngValue]="undefined" disabled  selected>Source 1</option>
+      <option *ngFor="let col of dateColumnList1" [ngValue]="col.ColumnName">
+        {{col.ColumnName}}
+      </option>
+    </select>
+    <select class="form-control  col-lg-5 offset-2" [(ngModel)]="dataSourceColumnList2.DataTableFilterList[0].ColumnName">
+        <option [ngValue]="undefined" disabled  selected>Source 2</option>
+      <option *ngFor="let col of dateColumnList2" [ngValue]="col.ColumnName">
+        {{col.ColumnName}}
+      </option>
+    </select>
+  </div>
+  <div class="row leftPadding">
+    <div class="col-sm-5">
+    <input type="text" placeholder="Enter Value" class="form-control" [(ngModel)]="dataSourceColumnList1.DataTableFilterList[0].ColumnValue">
+    <!-- <app-date-picker #datePicker1 [datemodel]="datemodel1" (DateFilterColumnValue)="ondatemodel1Update($event)"></app-date-picker> -->
+    </div>
+    <div class="col-sm-5 offset-2">
+    <input type="text" placeholder="Enter Value" class="form-control" [(ngModel)]="dataSourceColumnList2.DataTableFilterList[0].ColumnValue">
+
+    <!-- <app-date-picker #datePicker2 [datemodel]="datemodel2" (DateFilterColumnValue)="ondatemodel2Update($event)"></app-date-picker> -->
+    </div>
+  </div>
+</div>

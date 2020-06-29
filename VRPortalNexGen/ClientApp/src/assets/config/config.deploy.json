@@ -1,0 +1,31 @@
+{
+    "env": {
+    "name": "#{envName}"
+    },
+    "appInsights": {
+    "instrumentationKey": "#{appInsightsKey}"
+    },
+    "logging": {
+    "console": true,
+    "appInsights": true
+    },
+    "aad": {
+    "requireAuth": true,
+    "tenant": "#{aadTenant}",
+    "clientId": "#{aadClientId}"
+    },
+    "apiServer": {
+    "metadata": "https://#{apiServerPrefix}.demo.com/api/v1.0/",
+    "rule": "https://#{apiServerPrefix}.demo.com/api/v1.0/",
+    },
+    "adalConfig": {
+        "clientId": "d16f60c8-44db-4823-8290-615c1dac3518",
+        "tenant": "f720594b-b725-4036-b27c-48d2a28840a3",
+        "redirectUri": "https://localhost:5001/common-platform",
+        "postLogoutRedirectUri": "https://localhost:5001/signout-callback-oidc",
+        "cacheLocation": "localStorage",
+        "endpoints": {
+            "api": "d16f60c8-44db-4823-8290-615c1dac3518"
+        }
+    }
+}

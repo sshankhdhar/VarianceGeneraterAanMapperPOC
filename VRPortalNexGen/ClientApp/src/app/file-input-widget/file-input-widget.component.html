@@ -1,0 +1,22 @@
+<!--<div class="input-group">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="File" (change)="onFileSelected($event)"> 
+    <label class="custom-file-label" for="File">Choose file</label>
+  </div>
+   <div class="input-group-append">
+    <button class="btn btn-sm btn-primary btn-file" type="button" (click)="onUpload()">Upload Data Source 1</button>
+  </div>  
+</div> -->
+<div [hidden]=true>
+  <input id="fileexplorer" type="file" (change)="onFileSelected($event)">
+</div>
+<div>
+<button mat-raised-button color="accent" (click)="fileexplorer()">Upload to Data Source 1</button>
+{{dataSourceColumns.FileName}}
+</div>
+<!-- loader.component.html -->
+<div class="progress-loader" *ngIf="loading != 0">
+<mat-card>
+  <mat-progress-bar mode="determinate" value="loading"></mat-progress-bar>
+</mat-card>
+</div>

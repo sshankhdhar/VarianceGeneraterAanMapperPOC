@@ -1,0 +1,29 @@
+<div class="modal-dailog">
+    <div class="modal-header">
+      <h4 class="modal-title">Stored Procedure Parameter List</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class='row'>
+          <div class="col-sm-6">
+            <table>
+              <tr *ngFor="let spParameterName of storedProcedureParameterNameList;let i=index">
+                <td>
+                {{spParameterName}}  
+                </td>
+                <td>
+                    <input type="text" placeholder="Enter parameter value" class="form-control" [(ngModel)]="SpParameterValue[spParameterName]">
+                </td>              
+              </tr>
+            </table> 
+            {{SpParameterValue|json}}          
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" type="submit" (click)="onSubmit()">Submit</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Cross click')">Close</button>
+    </div>
+  </div>

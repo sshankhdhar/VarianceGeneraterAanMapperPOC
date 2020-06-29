@@ -1,0 +1,23 @@
+<!-- <mat-card-title-group>
+  <mat-card-title>Comparision Output Extract</mat-card-title>
+  <mat-card-content><button mat-raised-button color="accent" (click)="onExport()">Export</button></mat-card-content>
+</mat-card-title-group> -->
+
+<div class="card-group">
+  <div class="card">
+    <div class="card-header   bg-primary text-white">
+      <div class="float-left">
+        Comparision Output Extract
+      </div>
+      <button class="btn btn-xs btn-primary btn-file float-right" type="button" (click)="onExport()"><i
+          class="fa fa-file-excel-o"></i> Export</button>
+          <button class="btn btn-xs btn-success btn-file float-right" type="button" (click)="onSaveConfiguration()"><i
+            class="fa fa-file-excel-o"></i> Save Report</button>
+    </div>
+    <div class="card-body">
+      <ag-grid-angular style="width: auto; height: 500px; padding: 0px 0px 46px 0px;" class="ag-theme-balham"
+        [rowData]="rowData" [columnDefs]="columnDefs" (rowClicked)="onRowClicked($event)">
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>
